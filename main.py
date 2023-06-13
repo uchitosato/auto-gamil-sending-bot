@@ -128,7 +128,6 @@ def smtp_sender():
     index = 1
     while index < num_senders + 1:
         content = select_random_msg("./assets/First Message 200 Eng.txt")
-        # recipient = list_recipients[random.randrange(0, num_recipients)]
         recipient = list_recipients[random.randrange(0, num_recipients)]
         subject='{0}'.format(recipient.split('@')[0])
         send_email(content, subject ,recipient, index, "")
@@ -177,7 +176,6 @@ def pop3_receiver(pop_user, pop_password, index):
     
     link_lists = read_file_line_by_line("./assets/links test.txt")
     num_link = len(link_lists)
-    # pop3_interval = int(config.get("pop3_interval"))
     
     while True:
         try:
