@@ -1,0 +1,6 @@
+smtp_server=smtp.gmail.com
+user_account=uchitosato@gmail.com
+user_password=eeekahpyfwhuazqg
+smtp_interval=30
+pop3_server=pop.gmail.com
+pop3_interval=3
