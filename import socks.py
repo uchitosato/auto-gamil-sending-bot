@@ -1,25 +1,32 @@
 import socks
-import smtplib
+import imaplib
 import ssl
 from email.message import EmailMessage
+import time
 
 def send_email(content, subject, recipient):
     try:
-        smtp_server = 'smtp.gmail.com'
-        smtp_port = 465
-        smtp_username = 'omargtr24@gmail.com'
-        smtp_password = 'djurwjqtpbuoafny'
+        imap_server = 'imap.gmail.com'
+        imap_port = 993
+        imap_username = 'uchitosato@gmail.com'
+        imap_password = 'eeekahpyfwhuazqg'
         context = ssl.create_default_context()
-        with smtplib.SMTP_SSL(smtp_server, smtp_port, context=context) as server:
-            server.login(smtp_username, smtp_password)
+        with imaplib.IMAP4_SSL(imap_server, imap_port) as server:
+            server.login(imap_username, imap_password)
             msg = EmailMessage()
             msg.set_content(content)
             msg['Subject'] = "Subject"
             msg['To'] = recipient
-            server.send_message(msg, from_addr=smtp_username, to_addrs=recipient)
-            server.quit()
+            server.append('Inbox', "", imaplib.Time2Internaldate(time.time()), str(msg).encode('utf-8'))
+            server.logout()
     except Exception as e:
         print('Error(send_email): ', e)
 
+socks.setdefaultproxy(socks.SOCKS5, "91.221.37.187", 1080)
+socks.wrapmodule(imaplib)
 
-send_email('Content', 'Subject', 'oliverlim818@gmail.com')
+try:
+    send_email('Are you there now?', 'Subject', 'afoucher7255@gmail.com')
+    print("success-------------->")
+except:
+    print("failed!!!!!!!!!!!!!!!!")
