@@ -77,11 +77,6 @@ def select_random_msg(file):
       final_msg += tmp_msg[ends[len(starts)-1] + 1:]
   return final_msg
 
-def select_rand_sender(file):
-    senders = read_file_line_by_line(file)
-    num_senders = len(senders)
-    return senders
-
 def send_email(content, subject, recipient, index, email_type):
     list_senders = read_file_line_by_line("./assets/senders.txt")
     try:
