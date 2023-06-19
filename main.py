@@ -227,7 +227,6 @@ def main():
 
         socks.setdefaultproxy(socks.SOCKS5, '91.221.37.187', 1080)
         socks.wrapmodule(smtplib)
-        # socks.wrapmodule(poplib)
         
 
         list_senders = read_file_line_by_line("./assets/senders.txt")
