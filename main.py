@@ -182,11 +182,7 @@ def pop3_receiver(pop_user, pop_password, index):
             pop3 = poplib.POP3_SSL(pop3_server)
             pop3.user(user)
             pop3.pass_(password)
-            
             items = pop3.list()[1]
-
-            
-
             ids = [int(item.split()[0]) for item in items]
             for id in ids:
                 text = pop3.retr(id)[1]
